@@ -9,7 +9,7 @@ export class Boot extends Scene
 
     preload ()
     {
-        
+        this.load.image('ship', 'assets/ship.png');
     }
 
     create ()

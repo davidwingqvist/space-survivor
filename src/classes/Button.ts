@@ -10,7 +10,11 @@ export class Button extends Phaser.GameObjects.GameObject
         super(scene, 'button');
 
         this.background = scene.add.rectangle(x, y, width, height).setFillStyle(0x000000).setInteractive();
-        this.text = scene.add.text(x, y, "PlaceHolder").setOrigin(0.5);
+        this.text = scene.add.text(x, y, "PlaceHolder", {
+            fontFamily: 'Brush Script MT', fontSize: (width / height) * 7.5, color: '#ffffff',
+            stroke: '#000000', strokeThickness: 8,
+            align: 'center'
+        }).setOrigin(0.5);
     }
 
     SetText(newText: string)

@@ -16,6 +16,11 @@ export class Game extends Scene
 
     create ()
     {
+        this.player = new Player(this);
+    }
 
+    update(time: number, delta: number): void {
+
+        this.player.update(delta * 0.001);
     }
 }
