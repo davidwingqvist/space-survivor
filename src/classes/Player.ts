@@ -1,17 +1,15 @@
 import 'phaser';
 
-export class Player extends Phaser.GameObjects.GameObject
+export class Player
 {
-    sprite: Phaser.GameObjects.Sprite;
-
-
+    sprite: Phaser.Physics.Arcade.Sprite;
+    scene: Phaser.Scene;
     moveSpeed: number;
 
     constructor(scene: Phaser.Scene)
     {
-        super(scene, 'character');
-
-        this.sprite = scene.add.sprite(100, 100, 'ship');
+        this.scene = scene;
+        this.sprite = scene.physics.add.sprite(100, 100, 'ship');
 
         this.moveSpeed = 2.0;
     }
@@ -19,14 +17,19 @@ export class Player extends Phaser.GameObjects.GameObject
     update(deltaTime: number): void {
 
         this.scene.input.keyboard?.on('keydown-W', () => {
-            this.sprite.setPosition(this.sprite.x, this.sprite.y - (this.moveSpeed * deltaTime));
-            console.log(deltaTime);
+            this.sprite.setVelocityY(-360);
+            //console.log(this.sprite.y);
         });
 
         this.scene.input.keyboard?.on('keydown-S', () => {
-            this.sprite.setPosition(this.sprite.x, this.sprite.y + (this.moveSpeed * deltaTime));
-            console.log(deltaTime);
+            this.sprite.setVelocityY(360);
+            //console.log(this.sprite.y);
         });
+
+        if(this.sprite.y < -20)
+            this.sprite.setY(768);
+        else if(this.sprite.y > 788)
+            this.sprite.setY(0);
 
     }
 }
