@@ -18,18 +18,16 @@ export class Player
 
         this.scene.input.keyboard?.on('keydown-W', () => {
             this.sprite.setVelocityY(-360);
-            //console.log(this.sprite.y);
         });
 
         this.scene.input.keyboard?.on('keydown-S', () => {
             this.sprite.setVelocityY(360);
-            //console.log(this.sprite.y);
         });
 
-        if(this.sprite.y < -20)
-            this.sprite.setY(768);
-        else if(this.sprite.y > 788)
-            this.sprite.setY(0);
+        if(this.sprite.y < -25)
+            this.sprite.setY(788);
+        else if(this.sprite.y > 793)
+            this.sprite.setY(-20);
 
     }
 }
